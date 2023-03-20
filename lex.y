@@ -1,4 +1,4 @@
-%{dkd,
+%{
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -73,20 +73,22 @@ Declarator_var: tID
 
 Expression_statement: Expression tSEMI;
 
-Selection_statement:tIF tLPAR Expression tRPAR Statement tELSE Statement
+Selection_statement:
+    tIF tLPAR Expression tRPAR Statement tELSE Statement
     | tIF tLPAR Expression tRPAR Statement;
 
-Iteration_statement: tWHILE tLPAR Expression tRPAR Statement;
+Iteration_statement: 
+    tWHILE tLPAR Expression tRPAR Statement;
  
-Return_statement: tRETURN Expression tSEMI
+Return_statement: 
+    tRETURN Expression tSEMI
     | tRETURN tSEMI;
 
-Print_statement:tPRINT tLPAR Expression tRPAR tSEMI;
+Print_statement:
+    tPRINT tLPAR Expression tRPAR tSEMI;
 
-Expression: Assignment_expression;
-
-Assignment_expression: Equality_expression
-    | tID tASSIGN Assignment_expression
+Expression: Equality_expression
+    | tID tASSIGN Expression
     | tID tLPAR Arguments tRPAR;
 
 Arguments:
